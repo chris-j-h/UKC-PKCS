@@ -35,4 +35,4 @@ The associated PKCS#11 extended key types, attributes, and mechanisms are provid
 
 ## Sample Code
 
-Sample code is provided that uses the PKCS#11 extensions for a wrap/unwrap function.
+Sample code is describe in the [Sample Code Readme](./sample_code/README_sample_code.md).
