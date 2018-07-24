@@ -1,4 +1,6 @@
-# Unbound Key Control PKCS#11 Extensions
+# Unbound Key Control PKCS#11 Extensions and Sample Code
+
+## Extensions
 
 The Unbound PKCS#11 library supports the standard PKCS#11 specifications. It supports PCKS#11 version 2.20, but also includes some of the features of the more advanced versions, 2.30 and 2.40.
 
@@ -29,3 +31,6 @@ The associated PKCS#11 extended key types, attributes, and mechanisms are provid
     For more information, see:
     - https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions 
 
+## Sample Code
+
+Sample code is provided that uses the PKCS#11 extensions for a wrap/unwrap function.
