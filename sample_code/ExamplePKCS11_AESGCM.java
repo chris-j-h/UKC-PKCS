@@ -27,7 +27,16 @@ public class ExamplePKCS11_AESGCM
     byte[] encrypted = Library.C_Encrypt(hSession, plainData.getBytes());
 
     Library.C_DecryptInit(hSession, new CK_MECHANISM(CK.CKM_AES_GCM,gcmParams), aesKeyHandle);
-    byte[] decrypted = Library.C_Decrypt(hSession, encrypted);
+
+    byte[] decrypted;
+    try
+    {
+      decrypted = Library.C_Decrypt(hSession, encrypted);
+    }
+    catch (CKR_Exception e)
+    {
+      throw new SecurityException("GCM decryption failure", e);
+    }
 
     String test = new String(decrypted);
 
