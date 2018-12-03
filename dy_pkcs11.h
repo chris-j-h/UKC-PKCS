@@ -70,6 +70,9 @@ extern "C" {
 // Size Preserving Encryption
 #define DYCKM_SPE                       ((unsigned)0x80007e16) // size preserving
 
+// NIST Key Derivation Function, Counter Mode, CMAC
+#define DYCKM_NIST_KDF_CMAC_CTR         ((unsigned)0x80007e17) 
+  
 // Advanced password encryption
 #define DYCKM_PASSWORD                  ((unsigned)0x80007e21)
 
