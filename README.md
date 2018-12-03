@@ -33,6 +33,12 @@ The associated PKCS#11 extended key types, attributes, and mechanisms are provid
     For more information, see:
     - https://csrc.nist.gov/Projects/Post-Quantum-Cryptography/Round-1-Submissions 
 
+1. NIST Key Derivation Function
+
+    Contains the a NIST Key Derivation Function, for Counter Mode, with a sub-mode for CMAC.
+    
+    For more information, see:
+    - https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-108.pdf
 ## Sample Code
 
 Sample code is describe in the [Sample Code Readme](./sample_code/README_sample_code.md).
