@@ -123,6 +123,16 @@ typedef struct DYCK_PRF_PARAMS
   CK_ULONG      ulSecretLen;
 } DYCK_PRF_PARAMS;
 
+// NIST KDF CMAC CTR parameters
+typedef struct DYCK_NIST_KDF_CMAC_CTR_PARAMS 
+{
+  CK_BYTE_PTR pLabel;
+  CK_ULONG ulLabelLen;
+  CK_BYTE_PTR pContext;
+  CK_ULONG ulContextLen;
+  CK_ULONG ulSecretLen;
+} DYCK_NIST_KDF_CMAC_CTR_PARAMS;
+  
 // SIV data structure
 typedef struct DYCK_DATA {
   CK_BYTE_PTR pData;
