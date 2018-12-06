@@ -2,7 +2,6 @@ import com.dyadicsec.cryptoki.*;
 import sun.security.provider.SecureRandom;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -10,7 +9,7 @@ import static com.dyadicsec.cryptoki.CK.*;
 import static com.dyadicsec.cryptoki.CK.CKA_KEY_TYPE;
 import static com.dyadicsec.cryptoki.CK.CKK_EC;
 
-public class ExamplePKCS11_ECDSA {
+public class Main {
 
     static Map curves = new HashMap<String, byte[]>();
 
@@ -52,7 +51,7 @@ public class ExamplePKCS11_ECDSA {
      * @return
      * @throws CKR_Exception
      */
-    public static int getKey(CK_SESSION_HANDLE hSession, String id) throws CKR_Exception {
+    public static int findKey(CK_SESSION_HANDLE hSession, String id) throws CKR_Exception {
         CK_ATTRIBUTE[] tAttr =
                 {
                         new CK_ATTRIBUTE(CKA_ID, id.getBytes()),
@@ -100,7 +99,7 @@ public class ExamplePKCS11_ECDSA {
                 };
 
         int[] hKeys = Library.C_GenerateKeyPair(hSession, new CK_MECHANISM(CK.CKM_EC_KEY_PAIR_GEN), tPub, tPrv);
-        deleteKey(hSession, hKeys[0]); //delete the local key
+        deleteKey(hSession, hKeys[0]); //delete the local public key
         return hKeys[1];
     }
 
@@ -150,18 +149,17 @@ public class ExamplePKCS11_ECDSA {
 
     public static void main(String[] args) throws CKR_Exception {
         int slotId =0;
-        String id = UUID.randomUUID().toString();
+        String id = "ecdsa-private-key";
 
         CK_SESSION_HANDLE hSession = new CK_SESSION_HANDLE();
         int hPrvKey = 0;
 
-        byte[] data = new byte[32];
-        new SecureRandom().engineNextBytes(data);
+        byte[] data = "test".getBytes();
 
         try {
             hSession = openSession(slotId);
             generateEcdsa(hSession, id);
-            hPrvKey = getKey(hSession, id);
+            hPrvKey = findKey(hSession, id);
 
             byte[] signature = signEcdsa(hSession, hPrvKey, data);
             verifyEcdsa(hSession, hPrvKey, data, signature);
