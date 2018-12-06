@@ -1,5 +1,3 @@
-package com.unboundtech;
-
 import com.dyadicsec.cryptoki.*;
 import sun.security.provider.SecureRandom;
 
